@@ -15,10 +15,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "TB_USUARIO")
-@SequenceGenerator(name = "usuarios", sequenceName = "SQ_TB_USUARIO", allocationSize = 1)
 public class User {
 	@Id
-	@GeneratedValue(generator = "usuarios", strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cd_usuario")
 	private Integer id;
 
@@ -28,7 +27,7 @@ public class User {
 	@Column(name = "ds_email", nullable = false, length = 60)
 	private String email;
 
-	@Column(name = "nr_cpf", nullable = false, length = 11)
+	@Column(name = "nr_cpf", nullable = false, length = 16)
 	private String cpf;
 
 	@Column(name = "ds_senha", nullable = false, length = 16)

@@ -17,10 +17,10 @@ public class UserBean {
 	private EntityManager em = EntityManagerSingleton.getInstance();
 
 	private User user = new User();
-	private UserDao dao = new UserDaoImpl(em);
+	
 	public void save() {
 	
-		dao.save(user);
+		new UserDaoImpl(em).save(user);
 		System.out.println("Salvando..." + this.user);
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuário cadastrado com sucesso!"));
 	}

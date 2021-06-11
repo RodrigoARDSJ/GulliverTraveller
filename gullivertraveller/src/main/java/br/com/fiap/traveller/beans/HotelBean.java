@@ -19,27 +19,26 @@ public class HotelBean {
 
 	private Hotel hotel = new Hotel();
 
-	private HotelDao dao = new HotelDaoImpl(em);
 
 	public void save() {
 
-		dao.create(hotel);
+		new HotelDaoImpl(em).save(hotel);
 		System.out.println("Salvando..." + this.hotel);
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuário cadastrado com sucesso!"));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Hotel cadastrado com sucesso!"));
 	}
 	
 	public void update() {
 
-		dao.update(hotel);
+		new HotelDaoImpl(em).update(hotel);
 		System.out.println("Atualizando..." + this.hotel);
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuário cadastrado com sucesso!"));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Hotel cadastrado com sucesso!"));
 	}
 	
 	public void delete() {
 
-		dao.delete(hotel);
+		new HotelDaoImpl(em).delete(hotel);
 		System.out.println("Deletando..." + this.hotel);
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuário cadastrado com sucesso!"));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Hotel cadastrado com sucesso!"));
 	}
 	
 

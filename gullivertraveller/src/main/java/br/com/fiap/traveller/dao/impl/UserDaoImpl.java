@@ -16,7 +16,11 @@ public class UserDaoImpl extends GenericDaoImpl<User, Integer> implements UserDa
 	}
 
 	public void save(User user) {
-		create(user);
+		EntityManager manager = EntityManagerSingleton.getInstance();
+		manager.getTransaction().begin();
+		manager.persist(user);
+		
+		manager.getTransaction().commit();
 
 	}
 

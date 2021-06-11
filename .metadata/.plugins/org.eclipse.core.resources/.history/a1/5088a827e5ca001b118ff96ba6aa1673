@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+
+<ui:composition template="_template.xhtml">
+	<ui:define name="content">
+		<p:messages id="messages">
+			<p:autoUpdate />
+		</p:messages>
+
+		<h:form>
+			<p:card class="card-form">
+				<f:facet name="title">
+		        Hotel
+		    </f:facet>
+
+				<h:panelGrid columns="2">
+					<p:outputLabel for="name" value="Name" />
+					<p:inputText id="name" value="#{hotelBean.hotel.name}"
+						required="true">
+						<f:ajax event="blur" render="messages" />
+					</p:inputText>
+
+					<p:outputLabel for="description" value="Description" />
+					<p:inputText id="description"
+						value="#{hotelBean.hotel.description}" required="true">
+						<f:ajax event="blur" render="messages" />
+					</p:inputText>
+
+					<p:outputLabel for="value" value="Value">
+						<p:inputText id="value" value="#{hotelBean.hotel.price}">
+							<f:ajax event="blur" render="messeges" />
+						</p:inputText>
+					</p:outputLabel>
+
+					<p:outputLabel for="neighbourhood" value="Neighbourhood">
+						<p:inputText id="neighbourhood"
+							value="#{hotelBean.hotel.neighbourhood}">
+							<f:ajax event="blur" render="messeges" />
+						</p:inputText>
+					</p:outputLabel>
+
+
+
+
+				<f:facet name="footer">
+					<p:commandButton icon="pi pi-check" value="Save"
+						action="#{hotelBean.create}">
+
+					</p:commandButton>
+					<p:commandButton icon="pi pi-times" value="Delete"
+						styleClass="ui-button-secondary" style="margin-left: .5em"
+						action="#{hotelBean.delete}" />
+
+					</p:commandButton>
+					<p:commandButton icon="pi pi-times" value="Update"
+						styleClass="ui-button-secondary" style="margin-left: .5em"
+						action="#{hotelBean.update}" />
+				</f:facet>
+			</p:card>
+		</h:form>
+
+
+	</ui:define>
+
+</ui:composition>
+
+</html>

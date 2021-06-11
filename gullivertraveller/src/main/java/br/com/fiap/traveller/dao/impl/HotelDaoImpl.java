@@ -7,14 +7,24 @@ import javax.persistence.TypedQuery;
 
 import br.com.fiap.traveller.dao.HotelDao;
 import br.com.fiap.traveller.models.Hotel;
+import br.com.fiap.traveller.models.User;
 import br.com.fiap.traveller.singleton.EntityManagerSingleton;
 
-public class HotelDaoImpl extends GenericDaoImpl<Hotel, Integer> implements HotelDao{
+public class HotelDaoImpl extends GenericDaoImpl<Hotel, Integer> implements HotelDao {
 
 	public HotelDaoImpl(EntityManager em) {
 		super(em);
 	}
-	
+
+	public void save(Hotel hotel) {
+		EntityManager manager = EntityManagerSingleton.getInstance();
+		manager.getTransaction().begin();
+		manager.persist(hotel);
+		manager.getTransaction().commit();
+		
+
+	}
+
 	@Override
 	public List<Hotel> searchForAcceptableDistance(Double distance) {
 		TypedQuery<Hotel> query = em.createQuery("from Hotel h where h.avPaulistaDistance < :d", Hotel.class);
@@ -30,16 +40,15 @@ public class HotelDaoImpl extends GenericDaoImpl<Hotel, Integer> implements Hote
 	}
 
 	@Override
-	public List<Hotel> getAll(){
+	public List<Hotel> getAll() {
 		EntityManager em = EntityManagerSingleton.getInstance();
 		String jpql = "SELECT u FROM Hotel u";
 		TypedQuery<Hotel> query = em.createQuery(jpql, Hotel.class);
-	    List<Hotel> hotels = query.getResultList();
-	    return hotels;
-		
-	
+		List<Hotel> hotels = query.getResultList();
+		return hotels;
+
 	}
-	
+
 	public void update(Hotel hotel) {
 		EntityManager manager = EntityManagerSingleton.getInstance();
 		manager.getTransaction().begin();
@@ -63,7 +72,7 @@ public class HotelDaoImpl extends GenericDaoImpl<Hotel, Integer> implements Hote
 		manager.remove(hotel);
 		manager.flush();
 		manager.getTransaction().commit();
-		
+
 	}
 
 }
