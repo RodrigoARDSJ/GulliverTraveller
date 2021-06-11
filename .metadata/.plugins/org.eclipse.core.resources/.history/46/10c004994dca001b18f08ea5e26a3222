@@ -1,8 +1,0 @@
-package br.com.fiap.traveller.rest;
-
-import javax.ws.rs.Path;
-
-@Path("/users")
-public class UserEndpoint {
-
-}

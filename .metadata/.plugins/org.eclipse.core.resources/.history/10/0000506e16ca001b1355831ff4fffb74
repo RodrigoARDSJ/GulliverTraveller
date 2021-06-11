@@ -1,5 +1,0 @@
-package br.com.fiap.traveller.utils;
-
-public class AuthorizationListener {
-
-}
