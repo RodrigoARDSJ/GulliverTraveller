@@ -21,7 +21,7 @@ public class HotelDaoImpl extends GenericDaoImpl<Hotel, Integer> implements Hote
 		manager.getTransaction().begin();
 		manager.persist(hotel);
 		manager.getTransaction().commit();
-		manager.close();
+		manager.close()
 		
 
 	}

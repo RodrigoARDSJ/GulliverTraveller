@@ -20,7 +20,7 @@ public class UserDaoImpl extends GenericDaoImpl<User, Integer> implements UserDa
 		manager.getTransaction().begin();
 		manager.persist(user);
 		manager.getTransaction().commit();
-		manager.close();
+		
 
 	}
 
@@ -56,14 +56,12 @@ public class UserDaoImpl extends GenericDaoImpl<User, Integer> implements UserDa
 		manager.merge(user);
 		manager.flush();
 		manager.getTransaction().commit();
-		manager.close();
 	}
 
 	@Override
 	public User findById(Integer id) {
-		EntityManager manager = EntityManagerSingleton.getInstance();
-		User user = manager.find(User.class, id);
-		manager.close();
+		EntityManager em = EntityManagerSingleton.getInstance();
+		User user = em.find(User.class, id);
 		return user;
 	}
 
@@ -75,7 +73,6 @@ public class UserDaoImpl extends GenericDaoImpl<User, Integer> implements UserDa
 		manager.remove(user);
 		manager.flush();
 		manager.getTransaction().commit();
-		manager.close();
 		
 	}
 
