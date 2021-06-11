@@ -1,0 +1,19 @@
+package br.com.fiap.traveller.dao.impl;
+
+import javax.persistence.EntityManager;
+
+import br.com.fiap.traveller.dao.UserDao;
+import br.com.fiap.traveller.models.User;
+import br.com.fiap.traveller.singleton.EntityManagerSingleton;
+
+public class UserDaoImpl extends GenericDaoImpl<User, Integer> implements UserDao{
+		
+	public UserDaoImpl(EntityManager em) {
+		super(em);
+	}
+
+	public void save(User user) {
+		EntityManager em = EntityManagerSingleton.getInstance();
+		
+	}
+}

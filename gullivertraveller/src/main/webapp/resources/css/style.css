@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+body{
+	margin:0%;
+}
+
+.card-form{
+	width: 25em;
+	margin: 1em auto;
+}
+
+body .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem {
+    list-style: none;
+    padding: 0;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: top;
+    float: none;
+    background: yellow;
+    color: #6c757d;
+    top: 0;
+    margin: 0;
+    border-bottom: 2px solid #dee2e6;
+    cursor: pointer;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+body .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem.ui-state-active {
+    background: yellow;
+    border-color: #2196F3;
+}
+
+body .ui-tabmenu .ui-tabmenu-nav {
+    margin: 0;
+    padding: 0;
+    background: yellow;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    position: relative;
+}
