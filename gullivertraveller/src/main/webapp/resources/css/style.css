@@ -44,3 +44,71 @@ body .ui-tabmenu .ui-tabmenu-nav {
     flex-wrap: wrap;
     position: relative;
 }
+
+.hotel-list-item {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.hotel-list-detail {
+    flex: 1 1 0;
+    -ms-flex: 1 1 0;
+}
+
+.hotel-name {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.hotel-description {
+    margin: 0 0 1rem 0;
+}
+
+.hotel-list-action {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.hotel-price {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: .5rem;
+    align-self: flex-end;
+}
+
+.hotel .hotel-grid-item.border-1 {
+    border: 1px solid var(--surface-d);
+}
+
+.hotel .hotel-grid-item .hotel-grid-item-top, .hotel .hotel-grid-item .hotel-grid-item-bottom {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.hotel .hotel-grid-item .hotel-grid-item-content {
+    text-align: center;
+}
+
+
+.hotel .hotel-grid-item .hotel-grid-item-top, .hotel .hotel-grid-item .hotel-grid-item-bottom {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.hotel .hotel-grid-item .hotel-price {
+    font-size: 1.5rem;
+    font-weight: 600;
+}

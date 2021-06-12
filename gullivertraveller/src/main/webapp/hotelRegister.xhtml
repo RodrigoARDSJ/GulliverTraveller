@@ -20,7 +20,12 @@
 		    </f:facet>
 
 				<h:panelGrid columns="2">
-					<p:outputLabel for="name" value="Name " />
+
+					<p:outputLabel for="update" value="Digite o codigo para atualizar" />
+					<p:inputText id="update" value="#{hotelBean.hotel.id}">
+					</p:inputText>
+
+					<p:outputLabel for="name" value="Hotel name" />
 					<p:inputText id="name" value="#{hotelBean.hotel.name}"
 						required="true">
 						<f:ajax event="blur" render="messages" />
@@ -34,21 +39,28 @@
 					</p:inputText>
 
 
-					<p:outputLabel for="value" value="Value " />
-					<p:inputText id="value" value="#{hotelBean.hotel.value}">
-						<f:ajax event="blur" render="messeges" />
+					<p:outputLabel for="value" value="Price " />
+					<p:inputText id="value" value="#{hotelBean.hotel.value}"
+						converterMessage="O preço deve ser um número!" required="true">
+						<f:validateDoubleRange minimum="0" />
+						<f:ajax event="blur" render="messages" />
+
 					</p:inputText>
 
 
-					<p:outputLabel for="neighbourhood" value="Neighbourhood " />
+					<p:outputLabel for="neighbourhood" value="Bairro " />
 					<p:inputText id="neighbourhood"
-						value="#{hotelBean.hotel.neighbourhood}">
+						value="#{hotelBean.hotel.neighbourhood}" required="true">
 						<f:ajax event="blur" render="messeges" />
 					</p:inputText>
 
-					<p:outputLabel for="Disntance" value="Disntance " />
+					<p:outputLabel for="Disntance"
+						value="AvPAulista Distance(Somente numero) " />
 					<p:inputText id="Disntance"
-						value="#{hotelBean.hotel.avPaulistaDistance}">
+						value="#{hotelBean.hotel.avPaulistaDistance}"
+						converterMessage="A distancia deve ser um número!" required="true">
+						<f:validateDoubleRange minimum="0" />
+
 						<f:ajax event="blur" render="messeges" />
 					</p:inputText>
 				</h:panelGrid>
@@ -58,21 +70,53 @@
 				<f:facet name="footer">
 					<p:commandButton icon="pi pi-check" value="Save"
 						action="#{hotelBean.save}">
-
 					</p:commandButton>
-					<p:commandButton icon="pi pi-times" value="Delete"
-						styleClass="ui-button-secondary" style="margin-left: .5em"
-						action="#{hotelBean.delete}" />
 
 
 					<p:commandButton icon="pi pi-times" value="Update"
-						styleClass="ui-button-secondary" style="margin-left: .5em"
+						styleClass="ui-button-warning" style="margin-left: .5em"
 						action="#{hotelBean.update}" />
 				</f:facet>
 			</p:card>
 		</h:form>
+		<h:form>
+			<p:card class="card-form">
+				<h:panelGrid columns="2">
+					<p:outputLabel for="id"
+						value="Digite o cadigo para deletar um hotel" />
+					<p:inputText id="id" value="#{hotelBean.hotel.id}">
+					</p:inputText>
+				</h:panelGrid>
+				<f:facet name="footer">
+					<p:commandButton icon="pi pi-times" value="Delete"
+						styleClass="ui-button-danger" style="margin-left: .5em"
+						action="#{hotelBean.delete}" />
 
+				</f:facet>
+			</p:card>
+		</h:form>
+		<h:form id="table-hotels">
+			<div class="card">
+				<p:dataTable var="hotel" value="#{hotelBean.hotels}">
 
+					<p:column headerText="Id">
+						<h:outputText value="#{hotel.id}" />
+					</p:column>
+
+					<p:column headerText="Name">
+						<h:outputText value="#{hotel.name}" />
+					</p:column>
+
+					<p:column headerText="Description">
+						<h:outputText value="#{hotel.description}" />
+					</p:column>
+
+					<p:column headerText="Price">
+						<h:outputText value="#{hotel.value}" />
+					</p:column>
+				</p:dataTable>
+			</div>
+		</h:form>
 	</ui:define>
 
 </ui:composition>
