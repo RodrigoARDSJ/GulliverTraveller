@@ -2,7 +2,6 @@ package br.com.fiap.traveller.rest;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -15,14 +14,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import br.com.fiap.traveller.dao.UserDao;
-import br.com.fiap.traveller.dao.impl.UserDaoImpl;
 import br.com.fiap.traveller.models.User;
-import br.com.fiap.traveller.singleton.EntityManagerSingleton;
 
 @Path("/users")
 public class UserEndpoint {
-	EntityManager em = EntityManagerSingleton.getInstance();
-	private UserDao dao = new UserDaoImpl(em);
+	private UserDao dao = new UserDao();
 	
 	
 	@GET
@@ -39,7 +35,7 @@ public class UserEndpoint {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}
 		try {
-			dao.save(user);
+			dao.create(user);
 		} catch (Exception e) {
 			return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
 					.build();

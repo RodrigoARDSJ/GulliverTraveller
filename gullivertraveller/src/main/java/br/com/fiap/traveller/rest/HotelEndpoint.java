@@ -2,7 +2,6 @@ package br.com.fiap.traveller.rest;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -15,14 +14,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import br.com.fiap.traveller.dao.HotelDao;
-import br.com.fiap.traveller.dao.impl.HotelDaoImpl;
 import br.com.fiap.traveller.models.Hotel;
-import br.com.fiap.traveller.singleton.EntityManagerSingleton;
 
 @Path("/hotels")
 public class HotelEndpoint {
-	EntityManager em = EntityManagerSingleton.getInstance();
-	private HotelDao dao = new HotelDaoImpl(em);
+	private HotelDao dao = new HotelDao();
 	
 	
 	@GET
