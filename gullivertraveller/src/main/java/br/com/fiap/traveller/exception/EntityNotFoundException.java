@@ -2,17 +2,17 @@ package br.com.fiap.traveller.exception;
 
 public class EntityNotFoundException extends Exception {
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-    public EntityNotFoundException() {
-        super("Entidade nï¿½o encontrada");
-    }
-
-    public EntityNotFoundException(String msg) {
-        super(msg);
-    }
-
+	public EntityNotFoundException() {
+		super("Entidade não encontrada");
+	}
+	
+	public EntityNotFoundException(String msg) {
+		super(msg);
+	}
+	
 }

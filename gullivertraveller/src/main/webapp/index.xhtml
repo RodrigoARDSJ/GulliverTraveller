@@ -1,67 +1,66 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="_template.xhtml">
-    <ui:define name="content">
+	<ui:define name="content">
 
-        <div class="card product">
-            <h:form id="form">
-                <p:dataView var="setup" value="" rows="5" paginator="true"
-                            rowsPerPageTemplate="5,10"
-                            paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                            gridIcon="pi pi-th-large" listIcon="pi pi-bars">
+		<div class="card product">
+			<h:form id="form">
+				<p:dataView var="setup" value="" rows="5" paginator="true"
+					rowsPerPageTemplate="5,10"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					gridIcon="pi pi-th-large" listIcon="pi pi-bars">
 
-                    <p:dataViewGridItem>
-                        <div class="setup-grid-item card border-1">
-                            <div class="setup-grid-item-content">
-                                <p:graphicImage name="images/product/" library="demo"/>
-                                <div class="setup-name"></div>
-                                <div class="setup-description"></div>
-                                <p:rating readonly="true" value="#{0}"/>
-                            </div>
-                            <div class="product-grid-item-bottom">
-                                <h:outputText value="" styleClass="setup-price">
-                                    <f:convertNumber currencySymbol="R$" type="currency"/>
-                                </h:outputText>
-                                <p:commandButton type="button" value="setup" icon="pi pi-search">
-                                </p:commandButton>
-                            </div>
-                        </div>
-                    </p:dataViewGridItem>
+					<p:dataViewGridItem>
+						<div class="setup-grid-item card border-1">
+							<div class="setup-grid-item-content">
+								<p:graphicImage name="images/product/" library="demo" />
+								<div class="setup-name"></div>
+								<div class="setup-description"></div>
+								<p:rating readonly="true" value="#{0}" />
+							</div>
+							<div class="product-grid-item-bottom">
+								<h:outputText value="" styleClass="setup-price">
+									<f:convertNumber currencySymbol="R$" type="currency" />
+								</h:outputText>
+								<p:commandButton type="button" value="setup" icon="pi pi-search">
+								</p:commandButton>
+							</div>
+						</div>
+					</p:dataViewGridItem>
 
-                    <p:dataViewListItem>
-                        <div class="setup-list-item">
-                            <p:graphicImage name="demo/images/product/"/>
-                            <div class="setup-list-detail">
-                                <div class="setup-name"></div>
-                                <div class="setup-description"></div>
-                                <p:rating value="0"/>
-                            </div>
-                            <div class="setup-list-action">
-                                <h:outputText value="" styleClass="">
-                                    <f:convertNumber currencySymbol="$" type="currency"/>
-                                </h:outputText>
-                                <p:commandButton type="button" value="Detail"
-                                                 icon="pi pi-search">
-                                </p:commandButton>
-                                <span
-                                        class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>
-                            </div>
-                        </div>
-                    </p:dataViewListItem>
-                </p:dataView>
-                <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14637.053375146921!2d-46.60449263704835!3d-23.487022328419418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1623443805778!5m2!1spt-BR!2sbr"
-                        width="600" height="450" style="border: 0;" allowfullscreen=""
-                        loading="lazy"></iframe>
-            </h:form>
-        </div>
-    </ui:define>
+					<p:dataViewListItem>
+						<div class="setup-list-item">
+							<p:graphicImage name="demo/images/product/" />
+							<div class="setup-list-detail">
+								<div class="setup-name"></div>
+								<div class="setup-description"></div>
+								<p:rating value="0" />
+							</div>
+							<div class="setup-list-action">
+								<h:outputText value="" styleClass="">
+									<f:convertNumber currencySymbol="$" type="currency" />
+								</h:outputText>
+								<p:commandButton type="button" value="Detail"
+									icon="pi pi-search">
+								</p:commandButton>
+								<span
+									class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>
+							</div>
+						</div>
+					</p:dataViewListItem>
+				</p:dataView>
+				<iframe
+					src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14637.053375146921!2d-46.60449263704835!3d-23.487022328419418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1623443805778!5m2!1spt-BR!2sbr"
+					width="600" height="450" style="border: 0;" allowfullscreen=""
+					loading="lazy"></iframe>
+			</h:form>
+		</div>
+	</ui:define>
 </ui:composition>
 </html>
