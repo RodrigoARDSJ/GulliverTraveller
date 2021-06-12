@@ -19,8 +19,7 @@ public class HotelBean {
     private Hotel hotel = new Hotel();
 
     public void save() {
-        new HotelDaoImpl(em).create(hotel);
-        em.getTransaction().commit();
+        new HotelDaoImpl(em).save(hotel);
         System.out.println("Salvando..." + this.hotel);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Hotel cadastrado com sucesso!"));
     }

@@ -15,17 +15,13 @@ public class UserDaoImpl extends GenericDaoImpl<User, Integer> implements UserDa
     }
 
     public void save(User user) {
-        EntityManager manager = EntityManagerSingleton.getInstance();
-        manager.getTransaction().begin();
-        manager.persist(user);
-        manager.getTransaction().commit();
-        manager.close();
-
+        em.persist(user);
+        em.getTransaction().commit();
+        em.close();
     }
 
     public boolean exist(User user) {
-        EntityManager manager = EntityManagerSingleton.getInstance();
-        TypedQuery<User> query = manager
+        TypedQuery<User> query = em
                 .createQuery("SELECT u FROM User u " + "WHERE u.email = :email AND u.password = :password", User.class);
         query.setParameter("email", user.getEmail());
         query.setParameter("password", user.getPassword());
@@ -40,42 +36,34 @@ public class UserDaoImpl extends GenericDaoImpl<User, Integer> implements UserDa
 
     @Override
     public List<User> getAll() {
-        EntityManager em = EntityManagerSingleton.getInstance();
         String jpql = "SELECT u FROM User u";
         TypedQuery<User> query = em.createQuery(jpql, User.class);
-        List<User> users = query.getResultList();
-        return users;
-
-
+        return query.getResultList();
     }
 
     public void update(User user) {
-        EntityManager manager = EntityManagerSingleton.getInstance();
-        manager.getTransaction().begin();
-        manager.merge(user);
-        manager.flush();
-        manager.getTransaction().commit();
-        manager.close();
+        em.getTransaction().begin();
+        em.merge(user);
+        em.flush();
+        em.getTransaction().commit();
+        em.close();
     }
 
     @Override
     public User findById(Integer id) {
-        EntityManager manager = EntityManagerSingleton.getInstance();
-        User user = manager.find(User.class, id);
-        manager.close();
+        User user = em.find(User.class, id);
+        em.close();
         return user;
     }
 
     @Override
     public void delete(User user) {
-        EntityManager manager = EntityManagerSingleton.getInstance();
-        User u = manager.find(User.class, user.getId());
-        manager.getTransaction().begin();
-        manager.remove(user);
-        manager.flush();
-        manager.getTransaction().commit();
-        manager.close();
-
+        User u = em.find(User.class, user.getId());
+        em.getTransaction().begin();
+        em.remove(user);
+        em.flush();
+        em.getTransaction().commit();
+        em.close();
     }
 
 

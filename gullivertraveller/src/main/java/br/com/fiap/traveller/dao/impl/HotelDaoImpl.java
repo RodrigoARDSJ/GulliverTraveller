@@ -2,7 +2,6 @@ package br.com.fiap.traveller.dao.impl;
 
 import br.com.fiap.traveller.dao.HotelDao;
 import br.com.fiap.traveller.models.Hotel;
-import br.com.fiap.traveller.singleton.EntityManagerSingleton;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -15,11 +14,9 @@ public class HotelDaoImpl extends GenericDaoImpl<Hotel, Integer> implements Hote
     }
 
     public void save(Hotel hotel) {
-        EntityManager manager = EntityManagerSingleton.getInstance();
-        manager.getTransaction().begin();
-        manager.persist(hotel);
-        manager.getTransaction().commit();
-        manager.close();
+        em.persist(hotel);
+        em.getTransaction().commit();
+        em.close();
     }
 
     @Override
@@ -38,7 +35,6 @@ public class HotelDaoImpl extends GenericDaoImpl<Hotel, Integer> implements Hote
 
     @Override
     public List<Hotel> getAll() {
-        EntityManager em = EntityManagerSingleton.getInstance();
         String jpql = "SELECT u FROM Hotel u";
         TypedQuery<Hotel> query = em.createQuery(jpql, Hotel.class);
         List<Hotel> hotels = query.getResultList();
@@ -47,29 +43,24 @@ public class HotelDaoImpl extends GenericDaoImpl<Hotel, Integer> implements Hote
     }
 
     public void update(Hotel hotel) {
-        EntityManager manager = EntityManagerSingleton.getInstance();
-        manager.getTransaction().begin();
-        manager.merge(hotel);
-        manager.flush();
-        manager.getTransaction().commit();
+        em.getTransaction().begin();
+        em.merge(hotel);
+        em.flush();
+        em.getTransaction().commit();
     }
 
     @Override
     public Hotel findById(Integer id) {
-        EntityManager em = EntityManagerSingleton.getInstance();
-        Hotel hotel = em.find(Hotel.class, id);
-        return hotel;
+        return em.find(Hotel.class, id);
     }
 
     @Override
     public void delete(Hotel hotel) {
-        EntityManager manager = EntityManagerSingleton.getInstance();
-        Hotel u = manager.find(Hotel.class, hotel.getId());
-        manager.getTransaction().begin();
-        manager.remove(hotel);
-        manager.flush();
-        manager.getTransaction().commit();
-
+        Hotel u = em.find(Hotel.class, hotel.getId());
+        em.getTransaction().begin();
+        em.remove(hotel);
+        em.flush();
+        em.getTransaction().commit();
     }
 
 }
