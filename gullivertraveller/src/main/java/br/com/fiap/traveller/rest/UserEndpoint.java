@@ -13,8 +13,8 @@ import java.util.List;
 
 @Path("/users")
 public class UserEndpoint {
-    EntityManager em = EntityManagerSingleton.getInstance();
-    private UserDao dao = new UserDaoImpl(em);
+    private final EntityManager em = EntityManagerSingleton.getInstance().createEntityManager();
+    private final UserDao dao = new UserDaoImpl(em);
 
 
     @GET

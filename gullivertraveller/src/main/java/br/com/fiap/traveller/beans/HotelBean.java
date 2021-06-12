@@ -14,7 +14,7 @@ import javax.persistence.EntityManager;
 @RequestScoped
 public class HotelBean {
 
-    private final EntityManager em = EntityManagerSingleton.getInstance();
+    private final EntityManager em = EntityManagerSingleton.getInstance().createEntityManager();
 
     private Hotel hotel = new Hotel();
 
@@ -25,14 +25,12 @@ public class HotelBean {
     }
 
     public void update() {
-
         new HotelDaoImpl(em).update(hotel);
         System.out.println("Atualizando..." + this.hotel);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Hotel cadastrado com sucesso!"));
     }
 
     public void delete() {
-
         new HotelDaoImpl(em).delete(hotel);
         System.out.println("Deletando..." + this.hotel);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Hotel cadastrado com sucesso!"));

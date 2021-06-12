@@ -13,7 +13,7 @@ import javax.persistence.EntityManager;
 @Named
 @RequestScoped
 public class UserBean {
-    private EntityManager em = EntityManagerSingleton.getInstance();
+    private EntityManager em = EntityManagerSingleton.getInstance().createEntityManager();
 
     private User user = new User();
 

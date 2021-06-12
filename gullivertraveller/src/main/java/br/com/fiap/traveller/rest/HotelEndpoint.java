@@ -13,8 +13,9 @@ import java.util.List;
 
 @Path("/hotels")
 public class HotelEndpoint {
-    EntityManager em = EntityManagerSingleton.getInstance();
-    private HotelDao dao = new HotelDaoImpl(em);
+
+    private final EntityManager em = EntityManagerSingleton.getInstance().createEntityManager();
+    private final HotelDao dao = new HotelDaoImpl(em);
 
 
     @GET
