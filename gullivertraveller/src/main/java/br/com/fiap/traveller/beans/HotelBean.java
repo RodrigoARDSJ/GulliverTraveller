@@ -15,11 +15,11 @@ import javax.persistence.EntityManager;
 public class HotelBean {
 
     private final EntityManager em = EntityManagerSingleton.getInstance().createEntityManager();
-
     private Hotel hotel = new Hotel();
 
     public void save() {
-        new HotelDaoImpl(em).save(hotel);
+        new HotelDaoImpl(em).create(hotel);
+        em.getTransaction().commit();
         System.out.println("Salvando..." + this.hotel);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Hotel cadastrado com sucesso!"));
     }

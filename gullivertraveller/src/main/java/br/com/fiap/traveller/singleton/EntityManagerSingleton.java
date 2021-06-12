@@ -9,7 +9,7 @@ public class EntityManagerSingleton {
 
     public static EntityManagerFactory getInstance() {
         if (factory == null) {
-            factory = Persistence.createEntityManagerFactory("easypark");
+            factory = Persistence.createEntityManagerFactory("gullivertraveller");
         }
         return factory;
     }
