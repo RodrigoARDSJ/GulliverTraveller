@@ -7,7 +7,7 @@ import javax.persistence.Persistence;
 public class EntityManagerSingleton {
 
     private static final EntityManagerFactory FACTORY =
-            Persistence.createEntityManagerFactory("gullivertraveller-persistence-unit");
+            Persistence.createEntityManagerFactory("gullivertraveller");
     private static EntityManager manager;
 
     public static EntityManager getInstance() {

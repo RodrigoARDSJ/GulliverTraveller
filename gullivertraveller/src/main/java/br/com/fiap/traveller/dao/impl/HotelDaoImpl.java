@@ -14,13 +14,13 @@ public class HotelDaoImpl extends GenericDaoImpl<Hotel, Integer> implements Hote
         super(em);
     }
 
-/*    public void save(Hotel hotel) {
+    public void save(Hotel hotel) {
         EntityManager manager = EntityManagerSingleton.getInstance();
         manager.getTransaction().begin();
         manager.persist(hotel);
         manager.getTransaction().commit();
         manager.close();
-    }*/
+    }
 
     @Override
     public List<Hotel> searchForAcceptableDistance(Double distance) {

@@ -18,8 +18,8 @@ public class UserBean {
     private User user = new User();
 
     public void save() {
-
-        new UserDaoImpl(em).save(user);
+        new UserDaoImpl(em).create(user);
+        em.getTransaction().commit();
         System.out.println("Salvando..." + this.user);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuário cadastrado com sucesso!"));
     }

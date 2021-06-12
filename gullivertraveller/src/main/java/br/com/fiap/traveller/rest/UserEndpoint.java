@@ -31,7 +31,8 @@ public class UserEndpoint {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         try {
-            dao.save(user);
+            dao.create(user);
+            em.getTransaction().commit();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                     .build();
